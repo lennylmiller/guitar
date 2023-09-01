@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Guitar</title>
+    <script type="module" src="components/guitar-body.js"></script>
+    <link href="styles/csshake.min.css" type="text/css" rel="stylesheet">
+    <link href="styles/main.css" type="text/css" rel="stylesheet">
+
+    <script>
+      function clickToStart() {
+        document.querySelector('.control-panel').style.display = 'none';
+        document.querySelector('guitar-body').style.display = 'inline-block';
+      }
+    </script>
+  </head>
+  <body>
+    <guitar-body strings="6"></guitar-body>
+    <div class="control-panel" onclick="clickToStart()"><p class="click-me">Click Me To Start</p></div>
+  </body>
+</html>
