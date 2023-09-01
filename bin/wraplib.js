@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+// TO USE:$ node wraplib.js midi.min.js MIDI
+
 const fs = require('fs');
 
 const file = process.argv[2];
 const name = process.argv[3];
-const errMsg = `wrapper failed, file: ${file} name: ${name}`;
+const errMsg = `wrapper failed, file: ${file} name: ${nme}`;
 const inWinMsg = // eslint-disable-line
     `wrapper: window.${name} exists; exporting it.`;
 

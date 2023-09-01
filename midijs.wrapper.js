@@ -13,3 +13,4 @@ const result = window.MIDI
 if (!result) throw Error("wrapper failed, file: node_modules/midi.js/lib/midi.min.js name: MIDI")
 console.log('wraplib node_modules/midi.js/lib/midi.min.js MIDI', typeof window.MIDI)
 export default result
+
