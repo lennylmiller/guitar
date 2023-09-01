@@ -9,15 +9,15 @@ export default class GuitarString extends HTMLElement {
     });
 
     this.innerHTML = `
-          <div class="line"></div> 
-          <style>
-            guitar-string > .line { 
-              background-color: white;
-              height: 100%; 
-              width: 2px; 
-            }
-          </style>
-        `;
+      <div class="line"></div> 
+      <style>
+        guitar-string > .line { 
+          background-color: white;
+          height: 100%; 
+          width: 2px; 
+        }
+      </style>
+    `;
   }
 
   strum(params) {

@@ -10,14 +10,14 @@ export default class GuitarBody extends HTMLElement {
   }
 
   onMouseMove(event) {
-    this.stringsElement.points = {
-      last: this.lastPoint,
+    this.stringsElement.positions = {
+      last: this.lastPosition,
       current: {
         x: event.pageX,
         y: event.pageY
       }
     };
-    this.lastPoint = {
+    this.lastPosition = {
       x: event.pageX,
       y: event.pageY
     };
