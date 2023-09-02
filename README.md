@@ -1,4 +1,4 @@
-## Index
+## Web Component - Raw
 
 The `head` of this document has three imports, the first is the `guitar-body.js` script module. The second is the `csshake.min.css` third party css module used to shake an element. The final is the `main.css` css module, which is used to style the elements place in the `body`.
 
