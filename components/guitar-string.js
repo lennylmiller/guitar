@@ -2,21 +2,37 @@ import MIDI from '../lib/midi.wrapper.js';
 
 export default class GuitarString extends HTMLElement {
   connectedCallback() {
+    this.orientation = this.getAttribute('orientation');
+
     MIDI.loadPlugin({
       soundfontUrl: './',
       instrument: 'lib/acoustic_grand_piano',
       onsuccess: () => this.onLoaded()
     });
 
+    console.log('orientation', this.orientation);
+
+    const innerCss = this.orientation === 'vertical'
+      ? `<style>
+           guitar-string > .line { 
+             background-color: white;
+             height: 100%; 
+             width: 2px; 
+           }
+        </style>`
+      : `<style>
+           guitar-string {
+             padding-top: 2.5em;
+           }
+           guitar-string > .line {
+             height: 2px;
+             background-color: silver;
+           }
+         </style>`
+
     this.innerHTML = `
       <div class="line"></div> 
-      <style>
-        guitar-string > .line { 
-          background-color: white;
-          height: 100%; 
-          width: 2px; 
-        }
-      </style>
+      ${innerCss}
     `;
   }
 
@@ -26,7 +42,11 @@ export default class GuitarString extends HTMLElement {
     }
 
     let dur = params.power * 10 + 250;
-    this.classList.add('shake', 'shake-constant', 'shake-horizontal');
+    this.classList.add(
+      'shake',
+      'shake-constant',
+      this.orientation === 'vertical' ? 'shake-horizontal' : 'shake-vertical'
+    );
     if (dur < 500) {
       this.classList.add('shake-little');
     }
@@ -46,7 +66,12 @@ export default class GuitarString extends HTMLElement {
   }
 
   stopStrum() {
-    this.classList.remove('shake', 'shake-constant', 'shake-horizontal', 'shake-little');
+    this.classList.remove(
+      'shake',
+      'shake-constant',
+      this.orientation === 'vertical' ? 'shake-horizontal' : 'shake-vertical',
+      'shake-little'
+    );
   }
 
   onLoaded() {
@@ -54,9 +79,14 @@ export default class GuitarString extends HTMLElement {
   }
 
   between(low, high) {
-    return low > high
+    return this.orientation === 'vertical'
+    ? low > high
       ? this.offsetLeft >= high && this.offsetLeft  <= low
       : this.offsetLeft >= low && this.offsetLeft  <= high
+
+    : low > high
+      ? this.offsetTop >= high && this.offsetTop  <= low
+      : this.offsetTop >= low && this.offsetTop  <= high
   }
 }
 
