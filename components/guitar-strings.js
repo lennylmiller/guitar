@@ -38,7 +38,7 @@ export default class GuitarStrings extends HTMLElement {
     let xMax = Math.max(positions.current.x, positions.last.x);
 
     for (let d = 0; d < this.stringsElements.length; d++) {
-      if (xMin <= this.stringsElements[d].offsetLeft && xMax >= this.stringsElements[d].offsetLeft) {
+      if (this.stringsElements[d].between(xMin, xMax)) {
         let strum = {
           power: magnitude,
           string: d

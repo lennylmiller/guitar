@@ -1,64 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        body {
-          background-color: black;
-          margin: 0;
-          padding: 0;
-        }
-
-        .guitar-body {
-          height: 100vh;
-          width: 100vw;
-          display: none;
-          position: absolute;
-        }
-
-        .guitar-string > .line {
-          background-color: white;
-          height: 100%;
-          width: 2px;
-        }
-
-        .guitar-strings {
-          height: 100%;
-          display: flex;
-        }
-
-        .guitar-strings > .guitar-string, div.spacer {
-          flex: 1;
-        }
-    </style>
-  </head>
-  <body>
-    <div class="guitar-body" style="display: inline-block;">
-      <div class="guitar-strings">
-        <div class="spacer"></div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-        <div class="guitar-string">
-          <div class="line"></div>
-        </div>
-      </div>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="styles/csshake.min.css" type="text/css" rel="stylesheet">
+  <title></title>
+  <style>
+    .guitar-strings {
+      display: grid;
+      grid-template-rows: 2fr;
+    }
+    .spacer {
+      height: 2em;
+    }
+    .guitar-string {
+      padding-top: 2.5em;
+    }
+    .guitar-string .line {
+      height: 2px;
+      background-color: silver;
+    }
+    .wrapper > div {
+      background: #eee;
+      padding-top: 0.4em;
+    }
+    .wrapper > div:nth-child(odd) {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="guitar-strings">
+    <div class="spacer"></div>
+    <div class="guitar-string"><div class="line"></div></div>
+    <div class="guitar-string"><div class="line"></div></div>
+    <div class="guitar-string"><div class="line"></div></div>
+    <div class="guitar-string"><div class="line"></div></div>
+    <div class="guitar-string"><div class="line"></div></div>
+    <div class="guitar-string"><div class="line"></div></div>
+  </div>
+</body>
 </html>

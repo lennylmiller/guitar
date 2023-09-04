@@ -1,10 +1,10 @@
-import MIDI from '../midijs.wrapper.js';
+import MIDI from '../lib/midi.wrapper.js';
 
 export default class GuitarString extends HTMLElement {
   connectedCallback() {
     MIDI.loadPlugin({
       soundfontUrl: './',
-      instrument: 'acoustic_grand_piano',
+      instrument: 'lib/acoustic_grand_piano',
       onsuccess: () => this.onLoaded()
     });
 
@@ -53,6 +53,11 @@ export default class GuitarString extends HTMLElement {
     this._ready = true;
   }
 
+  between(low, high) {
+    return low > high
+      ? this.offsetLeft >= high && this.offsetLeft  <= low
+      : this.offsetLeft >= low && this.offsetLeft  <= high
+  }
 }
 
 if (!customElements.get('guitar-string')) {
