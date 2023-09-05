@@ -26,3 +26,7 @@ guitar-body {
   display: none;
   position: absolute;
 }
+
+select.orientation {
+  display: none;
+}

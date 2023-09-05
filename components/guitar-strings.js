@@ -25,7 +25,7 @@ export default class GuitarStrings extends HTMLElement {
              grid-template-rows: 2fr;
            }
            .spacer {
-             height: 2em;
+             height: 4em;
            }
          </style>`
 
@@ -45,17 +45,11 @@ export default class GuitarStrings extends HTMLElement {
       return;
     }
 
-    let magnitude = this.orientation === 'vertical'
-      ? Math.abs(positions.current.x - positions.last.x)
-      : Math.abs(positions.current.y - positions.last.y);
-
-    let min = this.orientation === 'vertical'
-      ? Math.min(positions.current.x, positions.last.x)
-      : Math.min(positions.current.y, positions.last.y);
-
-    let max = this.orientation === 'vertical'
-      ? Math.max(positions.current.x, positions.last.x)
-      : Math.max(positions.current.x, positions.last.x);
+    const current = this.orientation === 'vertical' ? positions.current.x : positions.current.y
+    const last = this.orientation === 'vertical' ? positions.last.x : positions.last.y
+    const magnitude = Math.abs(current - last);
+    const min = Math.min(current, last);
+    const max = Math.max(current, last);
 
     for (let d = 0; d < this.stringsElements.length; d++) {
       if (this.stringsElements[d].between(min, max)) {

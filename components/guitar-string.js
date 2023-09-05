@@ -22,7 +22,7 @@ export default class GuitarString extends HTMLElement {
         </style>`
       : `<style>
            guitar-string {
-             padding-top: 2.5em;
+             padding-top: 3.5em;
            }
            guitar-string > .line {
              height: 2px;
@@ -79,14 +79,13 @@ export default class GuitarString extends HTMLElement {
   }
 
   between(low, high) {
-    return this.orientation === 'vertical'
-    ? low > high
-      ? this.offsetLeft >= high && this.offsetLeft  <= low
-      : this.offsetLeft >= low && this.offsetLeft  <= high
+    const offset = this.orientation === 'vertical'
+      ? this.offsetLeft
+      : this.offsetTop + this.offsetHeight
 
-    : low > high
-      ? this.offsetTop >= high && this.offsetTop  <= low
-      : this.offsetTop >= low && this.offsetTop  <= high
+    return low > high
+      ? offset >= high && offset <= low
+      : offset >= low && offset <= high
   }
 }
 

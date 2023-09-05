@@ -9,11 +9,23 @@
       function clickToStart() {
         document.querySelector('.control-panel').style.display = 'none';
         document.querySelector('guitar-body').style.display = 'inline-block';
+        document.querySelector('select.orientation').style.display = 'inline-block';
       }
     </script>
   </head>
   <body>
+    <select class="orientation" onchange="updateOrientation(event)">
+      <option value="vertical">Vertical</option>
+      <option value="horizontal">Horizontal</option>
+    </select>
+
     <guitar-body strings="6" orientation="vertical"></guitar-body>
     <div class="control-panel" onclick="clickToStart()"><p class="click-me">Click Me To Start</p></div>
+
+    <script>
+      function updateOrientation(event) {
+        document.querySelector('guitar-body').setAttribute('orientation', event.target.value);
+      }
+    </script>
   </body>
 </html>
