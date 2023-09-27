@@ -1,15 +1,40 @@
 import Strings from './guitar-strings.js';
 
 export default class GuitarBody extends HTMLElement {
+  static get observedAttributes() {
+    return ['orientation'];
+  }
+
   connectedCallback() {
-    this.orientation = this.getAttribute('orientation');
+    this.guitarBodyElement = document.createElement('div');
+    this.templates = document.createElement('div');
+    this.appendChild(this.guitarBodyElement);
+    this.appendChild(this.templates);
+    const request = new XMLHttpRequest();
 
-    this.innerHTML = `
-      <guitar-strings strings="${this.getAttribute('strings')}" orientation="${this.orientation}"></guitar-strings>
-    `;
+    request.open('GET', 'templates.html', true);
+    request.addEventListener('load', (event) => {
+      this.templates.innerHTML = event.target.response;
+      this.populateGuitarBody();
+    });
+    request.send();
+  }
 
+  populateGuitarBody() {
+    const template = this.templates.querySelector('template.' + this.getAttribute('orientation'));
+    if (template) {
+      const clone = template.content.cloneNode(true);
+      this.guitarBodyElement.innerHTML = '';
+      this.guitarBodyElement.appendChild(clone);
+    }
     this.stringsElement = this.querySelector('guitar-strings');
     this.addEventListener('mousemove', e => this.onMouseMove(e));
+  }
+
+  attributeChangedCallback(name, oldvalue, newvalue) {
+    if (this.templates) {
+      this.populateGuitarBody();
+    }
   }
 
   onMouseMove(event) {

@@ -35,6 +35,9 @@ While each `<guitar-string>` has a `strum()` method, this method is called from 
 * http://elrumordelaluz.github.io/csshake/
 * https://github.com/backspaces/as-app3d/blob/master/bin/wraplib.js
 * https://www.liutaiomottola.com/formulae/fret.htm
+* https://stackblitz.com/edit/d3-and-web-components?file=src%2Findex.ts
+* https://github.com/jens-ox/d3-lit/blob/master/src/data/fakeUsers1.js
+* https://github.com/web-padawan/awesome-web-components#standards
 
 The third item above is a tool to allow us to use the first library. The MIDI.js library is not a module, so in order to use the MIDI.js library we'll wrap it in a module using wraplib.js
 The command used; `node ./bin/wraplib.js midi.min.js MIDI > midi.wrapper.js`

@@ -80,7 +80,7 @@ export default class GuitarString extends HTMLElement {
 
   between(low, high) {
     const offset = this.orientation === 'vertical'
-      ? this.offsetLeft
+      ? this.offsetLeft + this.offsetWidth / 2
       : this.offsetTop + this.offsetHeight
 
     return low > high
